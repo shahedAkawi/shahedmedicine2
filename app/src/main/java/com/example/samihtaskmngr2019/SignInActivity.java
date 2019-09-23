@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
 
 
 public class SignInActivity extends AppCompatActivity {
@@ -46,23 +47,58 @@ public class SignInActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+        //2.
         btnLogIN.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 dataHandler();
             }
         });
     }
-
+//1
     private void dataHandler()
     {
         String email=etEmail.getText().toString();
         String passw=etPassWord.getText().toString();
-        signIn(email,passw);
+        boolean isok=true;
+//        if(email.length()<4)
+//        {
+//            etEmail.setError("Email length error");
+//            isok=false;
+//        }
+//        if(email.indexOf("@")<0 || email.indexOf(".")<0)
+//        {
+//            etEmail.setError("email wrong format");
+//            isok=false;
+//        }
+        if(isValidEmailAddress(email)==false)
+        {
+            etEmail.setError("Invalid Email");
+            isok=false;
+        }
+        if(passw.length()<8)
+        {
+            etPassWord.setError("min length 8");
+            isok=false;
+        }
+        if(isok)
+        {
+
+        }
+       // signIn(email,passw);
+    }
+    public boolean isValidEmailAddress(String email) {
+        String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
+        java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
+        java.util.regex.Matcher m = p.matcher(email);
+        return m.matches();
     }
 
-
     private void signIn(String email, String passw) {
+        FirebaseAuth auth=FirebaseAuth.getInstance();
+        auth.signInWithEmailAndPassword(email,passw);
+
+    }
 //        FirebaseAuth auth=FirebaseAuth.getInstance();
 //        auth.signInWithEmailAndPassword(email,passw).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
 //            @Override
@@ -81,6 +117,7 @@ public class SignInActivity extends AppCompatActivity {
 //                }
 //            }
 //        });
-    }
+//    }
+
 
 }

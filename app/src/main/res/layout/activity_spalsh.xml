@@ -10,7 +10,9 @@
         android:id="@+id/imageView4"
         android:layout_width="247dp"
         android:layout_height="332dp"
-        app:srcCompat="@mipmap/ic_welcome_foreground"
-        tools:layout_editor_absoluteX="87dp"
-        tools:layout_editor_absoluteY="143dp" />
+        android:layout_marginTop="143dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/ic_welcome_foreground" />
 </androidx.constraintlayout.widget.ConstraintLayout>
