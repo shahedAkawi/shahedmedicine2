@@ -7,7 +7,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 //import com.google.android.gms.tasks.OnCompleteListener;
 //import com.google.android.gms.tasks.Task;
@@ -31,8 +37,8 @@ public class SignUpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
 
         etFirstName=findViewById(R.id .etFirstName) ;
-        etLastName=findViewById(R.id .edLastName) ;
-        etPhone= findViewById(R.id .edPhone) ;
+        etLastName=findViewById(R.id .etLastName) ;
+        etPhone= findViewById(R.id .etPhone) ;
         etEmail2= findViewById(R.id .edEmail2) ;
         etPassWord2=findViewById(R.id .edPassWord2) ;
         etPassword1=findViewById(R.id.edPassWord1);
@@ -81,8 +87,26 @@ public class SignUpActivity extends AppCompatActivity {
         }
         if(isok)
         {
+            createAcount(email,passw1,fname,lname,phone);
            // creatAcount(email,passw1);
         }
+    }
+
+    private void createAcount(String email, String passw1, String fname, String lname, String phone) {
+        FirebaseAuth auth=FirebaseAuth.getInstance();
+        auth.createUserWithEmailAndPassword(email,passw1).
+                addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()) {
+                            finish();
+                        }
+                        else
+                            {
+                            etEmail2.setError("Sign n up fialed");
+                        }
+                    }
+                });
     }
 
     //4.
@@ -92,7 +116,7 @@ public class SignUpActivity extends AppCompatActivity {
      * @param email user eamil
      * @param passw user password
      */
-    private void creatAcount(String email, String passw) {
+//    private void creatAcount(String email, String passw) {
 //        auth.createUserWithEmailAndPassword(email,passw)
 //                .addOnCompleteListener(SignUpActivity.this, new OnCompleteListener<AuthResult>() {
 //            @Override
@@ -110,6 +134,6 @@ public class SignUpActivity extends AppCompatActivity {
 //                }
 //            }
 //        });
-    }
+//    }
 
 }
