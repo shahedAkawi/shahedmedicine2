@@ -10,6 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".TempAllTaskActivity"></activity>
+        <activity android:name=".SignInActivity"/>
+        <activity android:name=".SignUpActivity"/>
         <activity android:name=".TestMainActivity" />
         <activity android:name=".WelcomeActivity">
             <intent-filter>
