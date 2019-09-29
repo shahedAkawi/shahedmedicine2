@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,18 +22,20 @@ public class SignUpActivity extends AppCompatActivity {
 //    FirebaseAuth auth;//to establish sign in sign up
 //    FirebaseUser user;//user
 
-    private EditText etFirstName,etLastName,etPhone,etEmail2,etPassWord2;
+    private EditText etFirstName,etLastName,etPhone,etEmail2,etPassWord2,etPassword1;
     private Button btnSave;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-        etFirstName=findViewById(R.id .edFirstName) ;
+
+        etFirstName=findViewById(R.id .etFirstName) ;
         etLastName=findViewById(R.id .edLastName) ;
         etPhone= findViewById(R.id .edPhone) ;
         etEmail2= findViewById(R.id .edEmail2) ;
         etPassWord2=findViewById(R.id .edPassWord2) ;
+        etPassword1=findViewById(R.id.edPassWord1);
         btnSave=findViewById(R.id .btnSave) ;
 //        auth=FirebaseAuth.getInstance();
 //        user=auth.getCurrentUser();//
@@ -46,10 +47,7 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
 
-
-
     }
-
     /**
      * get email and passwor from the field and try to create new user
      */
@@ -57,7 +55,8 @@ public class SignUpActivity extends AppCompatActivity {
     {
         boolean isok=true;//if all the fields filled well
         String email=etEmail2.getText().toString();
-        String passw1=etPassWord2.getText().toString();
+        String passw2=etPassWord2.getText().toString();
+        String passw1=etPassword1.getText().toString();
         String fname=etFirstName.getText().toString();
         String lname=etLastName.getText().toString();
         String phone=etPhone.getText().toString();
@@ -68,14 +67,21 @@ public class SignUpActivity extends AppCompatActivity {
             etEmail2.setError("Wrong Eamil");
             isok=false;
         }
-        if(passw1.length()<8)
+        if(passw1.length()<8 || passw1.equals(passw2)==false)
         {
-            etPassWord2.setError("Have to be at least 8 char");
+            etPassWord2.setError("Have to be at least 8 char and the same password");
+            etPassword1.setError("Have to be at least 8 char and the same password");
+
+            isok=false;
+        }
+        if(fname.length()==0)
+        {
+            etFirstName.setError("enter name");
             isok=false;
         }
         if(isok)
         {
-            creatAcount(email,passw1);
+           // creatAcount(email,passw1);
         }
     }
 

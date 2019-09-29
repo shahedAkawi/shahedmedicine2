@@ -16,7 +16,7 @@
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/edFirstName"
+                android:id="@+id/etFirstName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -48,14 +48,21 @@
                 android:ems="10"
                 android:hint="Email"
                 android:inputType="textPersonName" />
-
+            <EditText
+                android:id="@+id/edPassWord1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="PassWord"
+                android:inputType="textPassword" />
             <EditText
                 android:id="@+id/edPassWord2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="PassWord"
-                android:inputType="textPersonName" />
+                android:hint="Re PassWord"
+                android:inputType="textPassword" />
+
 
             <Button
                 android:id="@+id/btnSave"
