@@ -9,9 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TempAllTaskActivity"></activity>
-        <activity android:name=".SignInActivity"/>
-        <activity android:name=".SignUpActivity"/>
+        <activity
+            android:name=".MainTasksActivity"
+            android:label="@string/title_activity_main_tasks"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".TempAllTaskActivity" />
+        <activity android:name=".SignInActivity" />
+        <activity android:name=".SignUpActivity" />
         <activity android:name=".TestMainActivity" />
         <activity android:name=".WelcomeActivity">
             <intent-filter>

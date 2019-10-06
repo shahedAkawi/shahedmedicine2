@@ -8,9 +8,15 @@ import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import com.example.samihtaskmngr2019.data.MyTask;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Date;
 
@@ -69,6 +75,9 @@ public class AddTaskActivity extends AppCompatActivity {
 //        }
         if(isok)
         {
+            MyTask t=new MyTask();
+            t.setTitle(title);
+            createTask(t);
 //            MyTask task=new MyTask();
 //            task.setCreatedAt(new Date());
 //            //task.setDueDate(new Date(date));
@@ -108,6 +117,36 @@ public class AddTaskActivity extends AppCompatActivity {
 
 
         }
+
+
+    }
+
+    private void createTask(MyTask t)
+    {
+        //.1
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        //.2
+        DatabaseReference reference =
+                database.getReference();
+
+        String key = reference.child("tasks").push().getKey();
+        reference.child("tasks").child(key).setValue(t).addOnCompleteListener(AddTaskActivity.this, new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful())
+                {
+                    Toast.makeText(AddTaskActivity.this, "add successful", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+                else
+                {
+                    Toast.makeText(AddTaskActivity.this, "add failed"+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    task.getException().printStackTrace();
+                }
+
+            }
+        });
+
 
 
     }

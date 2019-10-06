@@ -65,21 +65,21 @@ public class SignInActivity extends AppCompatActivity {
         String email=etEmail.getText().toString();
         String passw=etPassWord.getText().toString();
         boolean isok=true;
-//        if(email.length()<4)
-//        {
-//            etEmail.setError("Email length error");
-//            isok=false;
-//        }
-//        if(email.indexOf("@")<0 || email.indexOf(".")<0)
-//        {
-//            etEmail.setError("email wrong format");
-//            isok=false;
-//        }
-        if(isValidEmailAddress(email)==false)
+        if(email.length()<4)
         {
-            etEmail.setError("Invalid Email");
+            etEmail.setError("Email length error");
             isok=false;
         }
+        if(email.indexOf("@")<0 || email.indexOf(".")<0)
+        {
+            etEmail.setError("email wrong format");
+            isok=false;
+        }
+//        if(isValidEmailAddress(email)==false)
+//        {
+//            etEmail.setError("Invalid Email");
+//            isok=false;
+//        }
         if(passw.length()<8)
         {
             etPassWord.setError("min length 8");
@@ -106,8 +106,8 @@ public class SignInActivity extends AppCompatActivity {
                 if(task.isSuccessful())
                 {
                     //todo go to ,mian  screen (all task activity)
-
-
+                    Intent intent=new Intent(SignInActivity.this,MainTasksActivity.class);
+                    startActivity(intent);
                 }
                 else
                     {
