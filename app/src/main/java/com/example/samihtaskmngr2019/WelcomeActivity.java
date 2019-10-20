@@ -6,53 +6,46 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class WelcomeActivity extends AppCompatActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_spalsh);
-
+    protected void onResume() {
+        super.onResume();
         Thread th=new Thread()
         {
             @Override
             public void run() {
                 try {
                     sleep(3*1000);
-                    Intent i=new Intent(getApplication(),SignInActivity.class);
-                    startActivity(i);
+                    FirebaseAuth auth=FirebaseAuth.getInstance();
+
+                    if(auth.getCurrentUser()==null || auth.getCurrentUser().getEmail()==null) {
+                        Intent i = new Intent(getApplication(), SignInActivity.class);
+                        startActivity(i);
+                        finish();
+                    }
+                    else
+                    {
+                        Intent i = new Intent(getApplication(), MainTasksActivity.class);
+                        startActivity(i);
+                        finish();
+                    }
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-
-
             }
         };
         th.start();
-
-
-
     }
-
     @Override
-    protected void onResume() {
-        MyThread myThread=new MyThread();
-        myThread.start();
-        super.onResume();
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_spalsh);
     }
 
-    public  class MyThread extends Thread
-    {
-        @Override
-        public void run() {
 
-            try {
-                sleep(3000);
-                Intent i=new Intent(getApplicationContext(),SignInActivity.class);
-                startActivity(i);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-    }
+
+
 }

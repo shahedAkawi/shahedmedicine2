@@ -16,6 +16,7 @@
         <activity android:name=".TempAllTaskActivity" />
         <activity android:name=".SignInActivity" />
         <activity android:name=".SignUpActivity" />
+        <activity android:name=".AddTaskActivity"/>
         <activity android:name=".TestMainActivity" />
         <activity android:name=".WelcomeActivity">
             <intent-filter>
