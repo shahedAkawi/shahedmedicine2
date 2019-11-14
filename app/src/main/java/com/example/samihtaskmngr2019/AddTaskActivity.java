@@ -78,6 +78,7 @@ public class AddTaskActivity extends AppCompatActivity {
         {
             MyTask t=new MyTask();
             t.setTitle(title);
+            t.setImportant(important);
             createTask(t);
 //            MyTask task=new MyTask();
 //            task.setCreatedAt(new Date());

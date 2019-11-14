@@ -40,7 +40,7 @@ public class TasksAdapter extends ArrayAdapter<MyTask>
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
         //building item view
-        View vitem= LayoutInflater.from(getContext()).inflate(R.layout.task_item,parent,true);
+        View vitem= LayoutInflater.from(getContext()).inflate(R.layout.task_item,parent,false);
         TextView tvTitle=vitem.findViewById(R.id.itmTvTitle);
         TextView tvSubject=vitem.findViewById(R.id.itmTvSubject);
         RatingBar rbPrio =vitem.findViewById(R.id.itmRatingPrio);
@@ -49,6 +49,9 @@ public class TasksAdapter extends ArrayAdapter<MyTask>
 
         //getting data source
         MyTask myTask = getItem(position);
+
+        //todo טיפול באירוע מחיקה
+
 
         //connect item view to data source
         tvTitle.setText(myTask.getTitle());
