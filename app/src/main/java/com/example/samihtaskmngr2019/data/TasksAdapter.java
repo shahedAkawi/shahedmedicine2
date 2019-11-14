@@ -51,7 +51,7 @@ public class TasksAdapter extends ArrayAdapter<MyTask>
         MyTask myTask = getItem(position);
 
         //todo טיפול באירוע מחיקה
-
+//חלךחלךחלךחךל
 
         //connect item view to data source
         tvTitle.setText(myTask.getTitle());
