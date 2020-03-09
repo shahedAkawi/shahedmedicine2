@@ -10,6 +10,7 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -65,7 +66,11 @@ public class TasksAdapter extends ArrayAdapter<MyTask>
                            public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
                                if(databaseError==null)
                                {
+                                   Toast.makeText(getContext(), "deleted", Toast.LENGTH_SHORT).show();
 
+                               }
+                               else {
+                                   Toast.makeText(getContext(), "not deleted:"+databaseError.getMessage(), Toast.LENGTH_SHORT).show();
                                }
                            }
                        });

@@ -8,76 +8,97 @@
     tools:context=".AddTaskActivity">
 
 
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-
-        <EditText
-            android:id="@+id/etTitle"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Title" />
+            android:orientation="vertical" >
 
+            <Button
+                android:id="@+id/btnDatePicker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pick a date" />
 
+            <Button
+                android:id="@+id/btnSaveTask"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/spnrMember"
+                android:layout_centerHorizontal="true"
+                android:text="save" />
 
-        <EditText
-            android:id="@+id/etSubject"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="text" />
+            <ImageButton
+                android:id="@+id/imgBtn"
+                android:layout_width="match_parent"
+                android:layout_height="154dp"
+                app:srcCompat="@drawable/common_google_signin_btn_icon_dark" />
 
+            <Button
+                android:id="@+id/btnUpload"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="upload" />
 
+            <TextView
+                android:id="@+id/tvImgURL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Image Url" />
 
+            <SeekBar
+                android:id="@+id/skbrImportant"
+                style="@style/Widget.AppCompat.SeekBar.Discrete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="10"
+                android:progress="3" />
 
-        <EditText
-            android:id="@+id/etDueDate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="Due Date"
-            android:inputType="date" />
+            <TextView
+                android:id="@+id/tvNeccesary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Neccesary" />
 
+            <EditText
+                android:id="@+id/etDueDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Due Date"
+                android:inputType="date" />
 
-    <Button
-        android:id="@+id/btnDatePicker"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Pick a date" />
+            <SeekBar
+                android:id="@+id/skbrNeccesary"
+                style="@style/Widget.AppCompat.SeekBar.Discrete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="10"
+                android:progress="3" />
 
-    <TextView
-        android:id="@+id/tvImportant"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Important" />
+            <TextView
+                android:id="@+id/tvImportant"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Important" />
 
+            <EditText
+                android:id="@+id/etSubject"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="text" />
 
-    <SeekBar
-        android:id="@+id/skbrImportant"
-        style="@style/Widget.AppCompat.SeekBar.Discrete"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:max="10"
-        android:progress="3" />
+            <EditText
+                android:id="@+id/etTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Title" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
-    <TextView
-        android:id="@+id/tvNeccesary"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Neccesary" />
-
-    <SeekBar
-        android:id="@+id/skbrNeccesary"
-        style="@style/Widget.AppCompat.SeekBar.Discrete"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:max="10"
-        android:progress="3" />
-
-    <Button
-        android:id="@+id/btnSaveTask"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/spnrMember"
-        android:layout_centerHorizontal="true"
-        android:text="save" />
 
 </LinearLayout>
