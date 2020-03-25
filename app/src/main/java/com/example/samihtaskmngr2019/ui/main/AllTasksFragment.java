@@ -3,6 +3,8 @@ package com.example.samihtaskmngr2019.ui.main;
 
 import android.os.Bundle;
 
+import android.widget.EditText;
+import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
@@ -30,6 +32,10 @@ public class AllTasksFragment extends Fragment {
     private TasksAdapter tasksAdapter;
     private ListView lvTasks;
 
+    //0 search: add ET amd Btn to xml
+    //1 search:
+    private ImageView imSearch;
+    private EditText etTitleTosearch;
 
     public AllTasksFragment() {
         // Required empty public constructor
@@ -43,8 +49,20 @@ public class AllTasksFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_all_tasks, container, false);
         lvTasks=view.findViewById(R.id.lstvTasks);
-
         lvTasks.setAdapter(tasksAdapter);
+        //2 search:
+        imSearch=view.findViewById(R.id.imSearch);
+        etTitleTosearch=view.findViewById(R.id.etTitleTosearch);
+        //3 search event:
+        imSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String toSearch= etTitleTosearch.getText().toString();
+                //5 search
+                readTasksFromFirebase(toSearch);
+            }
+        });
+
 
         return view;
     }
@@ -52,16 +70,17 @@ public class AllTasksFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        readTasksFromFirebase();
+        //6 search: delete method calling
+       // readTasksFromFirebase("");
     }
-
-    public void readTasksFromFirebase()
+                        //4 search: add parameter toi search
+    public void readTasksFromFirebase(final String stTosearch)
     {
         FirebaseDatabase database=FirebaseDatabase.getInstance();//to connect to database
         FirebaseAuth auth=FirebaseAuth.getInstance();//to get current UID
         String uid = auth.getUid();
         DatabaseReference reference = database.getReference();
-
+                                           //orderByChild("title").equalTo(stTosearch)// 5+6
         reference.child("tasks").child(uid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot)
@@ -71,8 +90,14 @@ public class AllTasksFragment extends Fragment {
                 {
                     MyTask t=d.getValue(MyTask.class);
                     Log.d("MYTASK",t.toString());
-                    tasksAdapter.add(t);
-
+                    //5 search:
+                    if(stTosearch==null || stTosearch.length()==0)
+                    {
+                        tasksAdapter.add(t);
+                    }
+                    else //6 search:
+                    if(t.getTitle().contains(stTosearch))
+                        tasksAdapter.add(t);
                 }
             }
 
