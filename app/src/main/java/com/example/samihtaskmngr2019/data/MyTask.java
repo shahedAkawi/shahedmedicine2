@@ -9,6 +9,7 @@ public class MyTask
     private String subject;
     private String owner;
     private int important;
+    private String image;
 
     public MyTask() {
         //kkjhkjhkjhkjhkj
@@ -62,5 +63,13 @@ public class MyTask
                 ", subject='" + subject + '\'' +
                 ", important=" + important +
                 '}';
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getImage() {
+        return image;
     }
 }

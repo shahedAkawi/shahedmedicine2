@@ -71,7 +71,7 @@ public class AllTasksFragment extends Fragment {
     public void onResume() {
         super.onResume();
         //6 search: delete method calling
-       // readTasksFromFirebase("");
+        readTasksFromFirebase("");
     }
                         //4 search: add parameter toi search
     public void readTasksFromFirebase(final String stTosearch)
@@ -94,6 +94,7 @@ public class AllTasksFragment extends Fragment {
                     if(stTosearch==null || stTosearch.length()==0)
                     {
                         tasksAdapter.add(t);
+
                     }
                     else //6 search:
                     if(t.getTitle().contains(stTosearch))

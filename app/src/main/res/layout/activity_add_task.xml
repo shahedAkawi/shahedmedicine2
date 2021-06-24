@@ -19,12 +19,6 @@
             android:orientation="vertical" >
 
             <Button
-                android:id="@+id/btnDatePicker"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Pick a date" />
-
-            <Button
                 android:id="@+id/btnSaveTask"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -44,11 +38,11 @@
                 android:layout_height="wrap_content"
                 android:text="upload" />
 
-            <TextView
-                android:id="@+id/tvImgURL"
+            <Button
+                android:id="@+id/btnDatePicker"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Image Url" />
+                android:text="Pick a date" />
 
             <SeekBar
                 android:id="@+id/skbrImportant"
@@ -97,6 +91,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Title" />
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

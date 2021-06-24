@@ -1,9 +1,12 @@
 package com.example.samihtaskmngr2019;
 
+import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
@@ -29,6 +32,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
@@ -36,6 +40,8 @@ import java.util.Date;
 import java.util.UUID;
 
 public class AddTaskActivity extends AppCompatActivity {
+    private static final int IMAGE_PICK_CODE = 100;
+    private static final int PERMISSION_CODE = 101;
     private EditText etTitle,etSubject;
     private SeekBar skbrImportant;
     private Button btnSave;
@@ -51,6 +57,11 @@ public class AddTaskActivity extends AppCompatActivity {
     private Button btnUpload;
     private TextView tvImgUrl;
     private Uri filePath;
+    private Uri toUploadimageUri;
+    private Uri downladuri;
+    StorageTask uploadTask;
+    private MyTask t;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,26 +71,35 @@ public class AddTaskActivity extends AppCompatActivity {
         //upload: 3
         imgBtnl=findViewById(R.id.imgBtn);
         btnUpload=findViewById(R.id.btnUpload);
-        tvImgUrl=findViewById(R.id.tvImgURL);
+        //tvImgUrl=findViewById(R.id.tvImgURL);
 
         //upload: 4
         imgBtnl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setType("image/*");
-                intent.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(Intent.createChooser(intent,
-                        "Select Picture"), 99);
+                //check runtime permission
+                Toast.makeText(getApplicationContext(), "image", Toast.LENGTH_SHORT).show();
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+                        //permission not granted, request it.
+                        String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE};
+                        //show popup for runtime permission
+                        requestPermissions(permissions, PERMISSION_CODE);
+                    } else {
+                        //permission already granted
+                        pickImageFromGallery();
+                    }
+
+                }
             }
         });
         ////upload: 6
-        btnUpload.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                uploadImage();
-            }
-        });
+//        btnUpload.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                uploadImage();
+//            }
+//        });
 
         etTitle=findViewById(R.id.etTitle);
        etSubject=findViewById(R.id.etSubject);
@@ -92,7 +112,7 @@ public class AddTaskActivity extends AppCompatActivity {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dataHandler();
+             dataHandler();
             }
         });
 //        btnDatePicker.setOnClickListener(new View.OnClickListener() {
@@ -105,7 +125,7 @@ public class AddTaskActivity extends AppCompatActivity {
     }
 
     //upload: 5
-    private void uploadImage() {
+    private void uploadImage(Uri filePath) {
 
         if(filePath != null)
         {
@@ -114,12 +134,23 @@ public class AddTaskActivity extends AppCompatActivity {
             progressDialog.show();
             FirebaseStorage storage= FirebaseStorage.getInstance();
             StorageReference storageReference = storage.getReference();
-            StorageReference ref = storageReference.child("images/"+ UUID.randomUUID().toString());
-            ref.putFile(filePath)
+            final StorageReference ref = storageReference.child("images/"+ UUID.randomUUID().toString());
+            uploadTask=ref.putFile(filePath)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             progressDialog.dismiss();
+                            ref.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Uri> task) {
+                                    downladuri = task.getResult();
+                                    t.setImage(downladuri.toString());
+                                    createTask(t);
+
+                                }
+                            });
+
                             Toast.makeText(getApplicationContext(), "Uploaded", Toast.LENGTH_SHORT).show();
                         }
                     })
@@ -138,25 +169,29 @@ public class AddTaskActivity extends AppCompatActivity {
                             progressDialog.setMessage("Uploaded "+(int)progress+"%");
                         }
                     });
-        }
-    }
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == 99 && resultCode == RESULT_OK
-                && data != null && data.getData() != null )
+        }else
         {
-            filePath = data.getData();
-            try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
-                imgBtnl.setImageBitmap(bitmap);
-            }
-            catch (IOException e)
-            {
-                e.printStackTrace();
-            }
+            t.setImage("");
+            createTask(t);
         }
     }
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if(requestCode == 99 && resultCode == RESULT_OK
+//                && data != null && data.getData() != null )
+//        {
+//            filePath = data.getData();
+//            try {
+//                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
+//                imgBtnl.setImageBitmap(bitmap);
+//            }
+//            catch (IOException e)
+//            {
+//                e.printStackTrace();
+//            }
+//        }
+//    }
 
     private void dataHandler() {
         boolean isok=true;
@@ -179,10 +214,16 @@ public class AddTaskActivity extends AppCompatActivity {
 //        }
         if(isok)
         {
-            MyTask t=new MyTask();
+            t=new MyTask();
             t.setTitle(title);
             t.setImportant(important);
-            createTask(t);
+            //createTask(t);
+            if(uploadTask!=null || (uploadTask!=null && uploadTask.isInProgress()))
+            {
+                Toast.makeText(this, " uploadTask.isInProgress(", Toast.LENGTH_SHORT).show();
+            }
+            else
+             uploadImage(toUploadimageUri);
 //            MyTask task=new MyTask();
 //            task.setCreatedAt(new Date());
 //            //task.setDueDate(new Date(date));
@@ -259,5 +300,38 @@ public class AddTaskActivity extends AppCompatActivity {
 
 
 
+    }
+
+    private void pickImageFromGallery(){
+        //intent to pick image
+        Intent intent=new Intent(Intent.ACTION_PICK);
+        intent.setType("image/*");
+        startActivityForResult(intent,IMAGE_PICK_CODE);
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults){
+        switch (requestCode){
+            case PERMISSION_CODE:{
+                if(grantResults.length>0 && grantResults[0]== PackageManager.PERMISSION_GRANTED){
+                    //permission was granted
+                    pickImageFromGallery();
+                }
+                else {
+                    //permission was denied
+                    Toast.makeText(this,"Permission denied...!",Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
+    }
+
+    //handle result of picked images
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode,resultCode,data);
+        if (resultCode==RESULT_OK && requestCode== IMAGE_PICK_CODE){
+            //set image to image view
+            toUploadimageUri = data.getData();
+            imgBtnl.setImageURI(toUploadimageUri);
+        }
     }
 }
