@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.samihtaskmngr2019">
+    package="com.example.shahedmedicine2">
     <uses-permission android:name="android.permission.INTERNET" />
      <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <application
@@ -10,17 +10,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MyUsersActivity"></activity>
+        <activity android:name="com.example.shahedmedicine2.MyUsersActivity"></activity>
         <activity
-            android:name=".MainTasksActivity"
+            android:name="com.example.shahedmedicine2.MainTasksActivity"
             android:label="@string/title_activity_main_tasks"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".TempAllTaskActivity" />
-        <activity android:name=".SignInActivity" />
-        <activity android:name=".SignUpActivity" />
-        <activity android:name=".AddTaskActivity" />
-        <activity android:name=".TestMainActivity" />
-        <activity android:name=".WelcomeActivity">
+        <activity android:name="com.example.shahedmedicine2.TempAllTaskActivity" />
+        <activity android:name="com.example.shahedmedicine2.SignInActivity" />
+        <activity android:name="com.example.shahedmedicine2.SignUpActivity" />
+        <activity android:name="com.example.shahedmedicine2.AddTaskActivity" />
+        <activity android:name="com.example.shahedmedicine2.TestMainActivity" />
+        <activity android:name="com.example.shahedmedicine2.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

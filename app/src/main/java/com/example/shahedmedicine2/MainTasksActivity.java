@@ -1,4 +1,4 @@
-package com.example.samihtaskmngr2019;
+package com.example.shahedmedicine2;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
 
-import com.example.samihtaskmngr2019.ui.main.MyFragmentsPagerAdapter;
+import com.example.shahedmedicine2.ui.main.MyFragmentsPagerAdapter;
 
 public class MainTasksActivity extends AppCompatActivity {
 

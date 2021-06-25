@@ -1,4 +1,4 @@
-package com.example.samihtaskmngr2019;
+package com.example.shahedmedicine2;
 
 import org.junit.Test;
 

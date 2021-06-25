@@ -1,4 +1,4 @@
-package com.example.samihtaskmngr2019.ui.main;
+package com.example.shahedmedicine2.ui.main;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.example.samihtaskmngr2019.R;
+import com.example.shahedmedicine2.R;
 
 /**
  * A placeholder fragment containing a simple view.

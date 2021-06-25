@@ -1,4 +1,4 @@
-package com.example.samihtaskmngr2019.data;
+package com.example.shahedmedicine2.data;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -14,7 +14,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.samihtaskmngr2019.R;
+import com.example.shahedmedicine2.R;
 //0
 //1 new class                         //2  extends ....
 public class MyUserAdapetr  extends ArrayAdapter<MyUser>

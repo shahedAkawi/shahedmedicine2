@@ -1,4 +1,4 @@
-package com.example.samihtaskmngr2019.ui.main;
+package com.example.shahedmedicine2.ui.main;
 
 import androidx.arch.core.util.Function;
 import androidx.lifecycle.LiveData;

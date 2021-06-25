@@ -1,6 +1,4 @@
-package com.example.samihtaskmngr2019.data;
-
-import java.util.Date;
+package com.example.shahedmedicine2.data;
 
 public class MyTask
 {

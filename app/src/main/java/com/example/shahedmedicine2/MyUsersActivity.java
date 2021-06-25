@@ -1,4 +1,4 @@
-package com.example.samihtaskmngr2019;
+package com.example.shahedmedicine2;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,9 +7,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.ListView;
 
-import com.example.samihtaskmngr2019.data.MyTask;
-import com.example.samihtaskmngr2019.data.MyUser;
-import com.example.samihtaskmngr2019.data.MyUserAdapetr;
+import com.example.shahedmedicine2.data.MyUser;
+import com.example.shahedmedicine2.data.MyUserAdapetr;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

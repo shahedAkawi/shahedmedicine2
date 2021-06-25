@@ -56,7 +56,7 @@
                 android:id="@+id/tvNeccesary"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Neccesary" />
+                android:text="how many times a day?" />
 
             <EditText
                 android:id="@+id/etDueDate"

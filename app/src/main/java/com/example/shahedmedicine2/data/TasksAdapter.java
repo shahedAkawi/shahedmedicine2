@@ -1,4 +1,4 @@
-package com.example.samihtaskmngr2019.data;
+package com.example.shahedmedicine2.data;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -19,7 +19,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.samihtaskmngr2019.R;
+import com.example.shahedmedicine2.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseError;
@@ -31,7 +31,6 @@ import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.zip.Inflater;
 
 public class TasksAdapter extends ArrayAdapter<MyTask>
 {

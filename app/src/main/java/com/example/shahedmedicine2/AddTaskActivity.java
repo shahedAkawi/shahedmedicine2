@@ -1,14 +1,12 @@
-package com.example.samihtaskmngr2019;
+package com.example.shahedmedicine2;
 
 import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,7 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 
-import com.example.samihtaskmngr2019.data.MyTask;
+import com.example.shahedmedicine2.data.MyTask;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -35,8 +33,6 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 
-import java.io.IOException;
-import java.util.Date;
 import java.util.UUID;
 
 public class AddTaskActivity extends AppCompatActivity {
@@ -70,7 +66,6 @@ public class AddTaskActivity extends AppCompatActivity {
 
         //upload: 3
         imgBtnl=findViewById(R.id.imgBtn);
-        btnUpload=findViewById(R.id.btnUpload);
         //tvImgUrl=findViewById(R.id.tvImgURL);
 
         //upload: 4

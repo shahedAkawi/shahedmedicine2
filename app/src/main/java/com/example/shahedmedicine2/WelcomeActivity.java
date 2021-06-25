@@ -1,4 +1,4 @@
-package com.example.samihtaskmngr2019;
+package com.example.shahedmedicine2;
 
 import android.content.Intent;
 import android.os.Bundle;

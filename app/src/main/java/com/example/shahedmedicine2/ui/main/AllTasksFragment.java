@@ -1,4 +1,4 @@
-package com.example.samihtaskmngr2019.ui.main;
+package com.example.shahedmedicine2.ui.main;
 
 
 import android.os.Bundle;
@@ -14,9 +14,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.example.samihtaskmngr2019.R;
-import com.example.samihtaskmngr2019.data.MyTask;
-import com.example.samihtaskmngr2019.data.TasksAdapter;
+import com.example.shahedmedicine2.R;
+import com.example.shahedmedicine2.data.MyTask;
+import com.example.shahedmedicine2.data.TasksAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
