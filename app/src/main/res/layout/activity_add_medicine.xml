@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".AddTaskActivity">
+    tools:context=".AddMedicinectivity">
 
 
     <androidx.core.widget.NestedScrollView
@@ -31,12 +31,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="154dp"
                 app:srcCompat="@drawable/common_google_signin_btn_icon_dark" />
-
-            <Button
-                android:id="@+id/btnUpload"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="upload" />
 
             <Button
                 android:id="@+id/btnDatePicker"
@@ -78,7 +72,7 @@
                 android:id="@+id/tvImportant"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Important" />
+                android:text="how many days" />
 
             <EditText
                 android:id="@+id/etSubject"

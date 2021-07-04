@@ -19,7 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 
-import com.example.shahedmedicine2.data.MyTask;
+import com.example.shahedmedicine2.data.MyMedicine;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -35,7 +35,7 @@ import com.google.firebase.storage.UploadTask;
 
 import java.util.UUID;
 
-public class AddTaskActivity extends AppCompatActivity {
+public class AddMedicinectivity extends AppCompatActivity {
     private static final int IMAGE_PICK_CODE = 100;
     private static final int PERMISSION_CODE = 101;
     private EditText etTitle,etSubject;
@@ -56,13 +56,13 @@ public class AddTaskActivity extends AppCompatActivity {
     private Uri toUploadimageUri;
     private Uri downladuri;
     StorageTask uploadTask;
-    private MyTask t;
+    private MyMedicine t;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_task);
+        setContentView(R.layout.activity_add_medicine);
 
         //upload: 3
         imgBtnl=findViewById(R.id.imgBtn);
@@ -209,7 +209,7 @@ public class AddTaskActivity extends AppCompatActivity {
 //        }
         if(isok)
         {
-            t=new MyTask();
+            t=new MyMedicine();
             t.setTitle(title);
             t.setImportant(important);
             //createTask(t);
@@ -262,7 +262,7 @@ public class AddTaskActivity extends AppCompatActivity {
 
     }
 
-    private void createTask(MyTask t)
+    private void createTask(MyMedicine t)
     {
         //.1
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -276,17 +276,17 @@ public class AddTaskActivity extends AppCompatActivity {
 
         String key = reference.child("tasks").push().getKey();
         t.setKey(key);
-        reference.child("tasks").child(uid).child(key).setValue(t).addOnCompleteListener(AddTaskActivity.this, new OnCompleteListener<Void>() {
+        reference.child("tasks").child(uid).child(key).setValue(t).addOnCompleteListener(AddMedicinectivity.this, new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful())
                 {
-                    Toast.makeText(AddTaskActivity.this, "add successful", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddMedicinectivity.this, "add successful", Toast.LENGTH_SHORT).show();
                     finish();
                 }
                 else
                 {
-                    Toast.makeText(AddTaskActivity.this, "add failed"+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddMedicinectivity.this, "add failed"+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     task.getException().printStackTrace();
                 }
 

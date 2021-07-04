@@ -12,13 +12,13 @@
         android:theme="@style/AppTheme">
         <activity android:name="com.example.shahedmedicine2.MyUsersActivity"></activity>
         <activity
-            android:name="com.example.shahedmedicine2.MainTasksActivity"
+            android:name="com.example.shahedmedicine2.MainMedicineActivity"
             android:label="@string/title_activity_main_tasks"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name="com.example.shahedmedicine2.TempAllTaskActivity" />
         <activity android:name="com.example.shahedmedicine2.SignInActivity" />
         <activity android:name="com.example.shahedmedicine2.SignUpActivity" />
-        <activity android:name="com.example.shahedmedicine2.AddTaskActivity" />
+        <activity android:name="com.example.shahedmedicine2.AddMedicinectivity" />
         <activity android:name="com.example.shahedmedicine2.TestMainActivity" />
         <activity android:name="com.example.shahedmedicine2.WelcomeActivity">
             <intent-filter>

@@ -15,8 +15,8 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.example.shahedmedicine2.R;
-import com.example.shahedmedicine2.data.MyTask;
-import com.example.shahedmedicine2.data.TasksAdapter;
+import com.example.shahedmedicine2.data.MyMedicine;
+import com.example.shahedmedicine2.data.MedicineAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -29,7 +29,7 @@ import com.google.firebase.database.ValueEventListener;
  */
 public class AllTasksFragment extends Fragment {
 
-    private TasksAdapter tasksAdapter;
+    private MedicineAdapter tasksAdapter;
     private ListView lvTasks;
 
     //0 search: add ET amd Btn to xml
@@ -45,7 +45,7 @@ public class AllTasksFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        tasksAdapter=new TasksAdapter(getContext());
+        tasksAdapter=new MedicineAdapter(getContext());
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_all_tasks, container, false);
         lvTasks=view.findViewById(R.id.lstvTasks);
@@ -88,7 +88,7 @@ public class AllTasksFragment extends Fragment {
                 tasksAdapter.clear();
                 for (DataSnapshot d : dataSnapshot.getChildren())
                 {
-                    MyTask t=d.getValue(MyTask.class);
+                    MyMedicine t=d.getValue(MyMedicine.class);
                     Log.d("MYTASK",t.toString());
                     //5 search:
                     if(stTosearch==null || stTosearch.length()==0)

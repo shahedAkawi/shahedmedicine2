@@ -17,11 +17,11 @@ import androidx.annotation.Nullable;
 import com.example.shahedmedicine2.R;
 //0
 //1 new class                         //2  extends ....
-public class MyUserAdapetr  extends ArrayAdapter<MyUser>
+public class MyMedicineAdapetr extends ArrayAdapter<MyUser>
 {
 
     //3.  fix error
-    public MyUserAdapetr(@NonNull Context context, int resource) {
+    public MyMedicineAdapetr(@NonNull Context context, int resource) {
         super(context, resource);
     }
    //4. override getview

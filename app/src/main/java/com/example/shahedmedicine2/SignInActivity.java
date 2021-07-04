@@ -105,7 +105,7 @@ public class SignInActivity extends AppCompatActivity {
                 if(task.isSuccessful())
                 {
                     //todo go to ,mian  screen (all task activity)
-                    Intent intent=new Intent(SignInActivity.this,MainTasksActivity.class);
+                    Intent intent=new Intent(SignInActivity.this, MainMedicineActivity.class);
                     startActivity(intent);
                 }
                 else

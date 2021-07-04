@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "242633599836",
+    "firebase_url": "https://shahed2-default-rtdb.firebaseio.com",
+    "project_id": "shahed2",
+    "storage_bucket": "shahed2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:242633599836:android:7d650050e3268731a72f99",
+        "android_client_info": {
+          "package_name": "com.example.shahedmedicine2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "242633599836-47ht4kpibtog54q3j3ldgtq249h4j2me.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.shahedmedicine2",
+            "certificate_hash": "8d4e87598d212bdb282d05faa7766dc9c486dbdf"
+          }
+        },
+        {
+          "client_id": "242633599836-80tnla35i3mjvlhaumq6r85g9kkdkno1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB8g6TqzRQisS-Kls7N0m1iGcNSmolCNL4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "242633599836-80tnla35i3mjvlhaumq6r85g9kkdkno1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

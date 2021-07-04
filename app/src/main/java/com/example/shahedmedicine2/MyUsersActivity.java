@@ -8,7 +8,7 @@ import android.util.Log;
 import android.widget.ListView;
 
 import com.example.shahedmedicine2.data.MyUser;
-import com.example.shahedmedicine2.data.MyUserAdapetr;
+import com.example.shahedmedicine2.data.MyMedicineAdapetr;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -22,7 +22,7 @@ public class MyUsersActivity extends AppCompatActivity {
 
     //5.2
     private ListView listView;
-    private MyUserAdapetr myUserAdapetr;
+    private MyMedicineAdapetr myUserAdapetr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +30,7 @@ public class MyUsersActivity extends AppCompatActivity {
         setContentView(R.layout.activity_my_users);
         //5.3
         listView=findViewById(R.id.listview);
-        myUserAdapetr=new MyUserAdapetr(getBaseContext(),R.layout.task_item2);
+        myUserAdapetr=new MyMedicineAdapetr(getBaseContext(),R.layout.task_item2);
         //5.4
         listView.setAdapter(myUserAdapetr);
     }

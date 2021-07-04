@@ -28,7 +28,7 @@ public class WelcomeActivity extends AppCompatActivity {
                     }
                     else
                     {
-                        Intent i = new Intent(getApplication(), MainTasksActivity.class);
+                        Intent i = new Intent(getApplication(), MainMedicineActivity.class);
                         startActivity(i);
                         finish();
                     }

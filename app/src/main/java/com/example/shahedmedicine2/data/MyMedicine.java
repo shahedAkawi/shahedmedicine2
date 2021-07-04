@@ -1,6 +1,6 @@
 package com.example.shahedmedicine2.data;
 
-public class MyTask
+public class MyMedicine
 {
     private String key;// key: unique id for each object. have to be....
     private String title;
@@ -9,7 +9,7 @@ public class MyTask
     private int important;
     private String image;
 
-    public MyTask() {
+    public MyMedicine() {
         //kkjhkjhkjhkjhkj
     }
 

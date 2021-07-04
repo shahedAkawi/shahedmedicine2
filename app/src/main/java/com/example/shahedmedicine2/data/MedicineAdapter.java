@@ -32,14 +32,14 @@ import com.squareup.picasso.Picasso;
 import java.io.File;
 import java.io.IOException;
 
-public class TasksAdapter extends ArrayAdapter<MyTask>
+public class MedicineAdapter extends ArrayAdapter<MyMedicine>
 {
 
     /**
      *
      * @param context
      */
-    public TasksAdapter(@NonNull Context context) {
+    public MedicineAdapter(@NonNull Context context) {
         super(context, R.layout.task_item);
     }
 
@@ -64,7 +64,7 @@ public class TasksAdapter extends ArrayAdapter<MyTask>
         ImageView imageView =vitem.findViewById(R.id.imageView);
 
         //getting data source
-        final MyTask myTask = getItem(position);
+        final MyMedicine myTask = getItem(position);
        // downloadImageUsingPicasso(myTask.getImage(),imageView);
        //downloadImageToMemory(myTask.getImage(),imageView);
         downloadImageToLocalFile(myTask.getImage(),imageView);

@@ -38,13 +38,15 @@
                 android:id="@+id/btnLogIn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="logIn" />
+                android:text="logIn"
+                android:textColor="#673AB7" />
 
             <Button
                 android:id="@+id/btnSignUp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="signUp" />
+                android:text="signUp"
+                android:textColor="#3F51B5" />
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

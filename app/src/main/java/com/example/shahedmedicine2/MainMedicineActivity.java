@@ -14,7 +14,7 @@ import android.view.View;
 
 import com.example.shahedmedicine2.ui.main.MyFragmentsPagerAdapter;
 
-public class MainTasksActivity extends AppCompatActivity {
+public class MainMedicineActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +32,7 @@ public class MainTasksActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Snackbar.make(view, "Add Task", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
-                Intent intent=new Intent(getApplication(),AddTaskActivity.class);
+                Intent intent=new Intent(getApplication(), AddMedicinectivity.class);
                 startActivity(intent);
             }
         });
