@@ -1,5 +1,9 @@
 package com.example.shahedmedicine2;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -11,6 +15,7 @@ import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
+import android.widget.Button;
 
 import com.example.shahedmedicine2.ui.main.MyFragmentsPagerAdapter;
 
@@ -27,6 +32,7 @@ public class MainMedicineActivity extends AppCompatActivity {
         tabs.setupWithViewPager(viewPager);
         FloatingActionButton fab = findViewById(R.id.fab);
 
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -38,3 +44,6 @@ public class MainMedicineActivity extends AppCompatActivity {
         });
     }
 }
+
+
+
