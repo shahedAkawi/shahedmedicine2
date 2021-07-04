@@ -19,14 +19,6 @@
         <activity android:name="com.example.shahedmedicine2.SignInActivity" />
         <activity android:name="com.example.shahedmedicine2.SignUpActivity" />
         <activity android:name="com.example.shahedmedicine2.AddMedicinectivity" />
-        <activity android:name="com.example.shahedmedicine2.TestMainActivity" />
-        <activity android:name="com.example.shahedmedicine2.WelcomeActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>

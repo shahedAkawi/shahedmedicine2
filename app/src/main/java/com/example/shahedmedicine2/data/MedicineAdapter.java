@@ -57,48 +57,12 @@ public class MedicineAdapter extends ArrayAdapter<MyMedicine>
         //building item view
         View vitem= LayoutInflater.from(getContext()).inflate(R.layout.task_item,parent,false);
         TextView tvTitle=vitem.findViewById(R.id.itmTvTitle);
-        TextView tvSubject=vitem.findViewById(R.id.itmTvSubject);
-        RatingBar rbPrio =vitem.findViewById(R.id.itmRatingPrio);
-        CheckBox cbIsCompleted=vitem.findViewById(R.id.itmChbxIsCompleted);
-        ImageView ivInfo =vitem.findViewById(R.id.itmImgInfo);
-        ImageView imageView =vitem.findViewById(R.id.imageView);
 
         //getting data source
         final MyMedicine myTask = getItem(position);
-       // downloadImageUsingPicasso(myTask.getImage(),imageView);
-       //downloadImageToMemory(myTask.getImage(),imageView);
-        downloadImageToLocalFile(myTask.getImage(),imageView);
-        //todo טיפול באירוע מחיקה
-        cbIsCompleted.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                   if(isChecked)
-                   {
-                       //todo delete this item
-                       FirebaseUtils.getRefrence().child(myTask.getKey()).removeValue(new DatabaseReference.CompletionListener() {
-                           @Override
-                           public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
-                               if(databaseError==null)
-                               {
-                                   Toast.makeText(getContext(), "deleted", Toast.LENGTH_SHORT).show();
-                                   deleteFile(myTask.getImage());
-                               }
-                               else {
-                                   Toast.makeText(getContext(), "not deleted:"+databaseError.getMessage(), Toast.LENGTH_SHORT).show();
-                               }
-                           }
-                       });
-                   }
-            }
-        });
-
 
         //connect item view to data source
         tvTitle.setText(myTask.getTitle());
-        tvSubject.setText(myTask.getSubject());
-        rbPrio.setRating(myTask.getImportant());
-        cbIsCompleted.setChecked(false);
-
 
 
         return vitem;
